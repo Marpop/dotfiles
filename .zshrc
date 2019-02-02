@@ -75,19 +75,14 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# https://github.com/sindresorhus/pure
 autoload -U promptinit; promptinit
 prompt pure
-
-# User configuration
-# ------------------------------------------------------------------------------
 
 # zsh extensions https://github.com/zsh-users
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# iTerm integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -98,9 +93,6 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR="micro"
 fi
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # aliases
 # ------------------------------------------------------------------------------
@@ -119,17 +111,13 @@ alias json="python -m json.tool"
 alias jsonf="python -m json.tool"
 
 # https://remysharp.com/2018/08/23/cli-improved
-# https://github.com/sharkdp/bat
 alias cat="bat"
-# https://github.com/junegunn/fzf
 alias preview="fzf --preview 'bat --color \"always\" {}'"
-# http://hisham.hm/htop/
+# add support for ctrl+o to open selected file in VS Code
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias top="htop"
-# https://github.com/sharkdp/fd/
 alias find="fd"
-# https://dev.yorhel.nl/ncdu
-alias du="ncdu --color dark -rr -x --exclude .git"
-# https://tldr.sh/
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias help="tldr"
 
 # python pip
