@@ -108,8 +108,6 @@ fi
 alias mv="mv -v"
 alias rm="rm -vi"
 alias cp="cp -v"
-# Prints disk usage in human readable form
-alias d="du -sh"
 # Clear the screen of your clutter
 alias c="clear"
 alias cl="clear;ls;pwd"
