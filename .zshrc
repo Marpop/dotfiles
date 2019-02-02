@@ -94,9 +94,9 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nano'
+  export EDITOR="nano"
 else
-  export EDITOR='micro'
+  export EDITOR="micro"
 fi
 
 # ssh
@@ -132,11 +132,11 @@ alias find="fd"
 # https://dev.yorhel.nl/ncdu
 alias du="ncdu --color dark -rr -x --exclude .git"
 # https://tldr.sh/
-alias help='tldr'
+alias help="tldr"
 
 # python pip
-alias python='python3'
-alias pip='pip3'
+alias python="python3"
+alias pip="pip3"
 
 # home directory in git repository
-alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
+alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME" 
