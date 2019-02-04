@@ -38,7 +38,6 @@
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	pager = diff-so-fancy | less --tabs=4 -RFX  # https://github.com/so-fancy/diff-so-fancy
 # [diff]
 # 	tool = icdiff
 # 	mnemonicPrefix = true
@@ -55,6 +54,9 @@
 # 	ff = only
 # [mergetool]
 # 	prompt = false
+[pager]
+	diff = diff-so-fancy | less --tabs=1,5 -RFX
+	show = diff-so-fancy | less --tabs=1,5 -RFX
 # [push]
 # 	default = simple
 # 	followTags = true
