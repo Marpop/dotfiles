@@ -75,32 +75,24 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# https://github.com/sindresorhus/pure
 autoload -U promptinit; promptinit
 prompt pure
-
-# User configuration
-# ------------------------------------------------------------------------------
 
 # zsh extensions https://github.com/zsh-users
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# iTerm integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nano'
+  export EDITOR="nano"
 else
-  export EDITOR='micro'
+  export EDITOR="micro"
 fi
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # aliases
 # ------------------------------------------------------------------------------
@@ -108,8 +100,6 @@ fi
 alias mv="mv -v"
 alias rm="rm -vi"
 alias cp="cp -v"
-# Prints disk usage in human readable form
-alias d="du -sh"
 # Clear the screen of your clutter
 alias c="clear"
 alias cl="clear;ls;pwd"
@@ -121,22 +111,18 @@ alias json="python -m json.tool"
 alias jsonf="python -m json.tool"
 
 # https://remysharp.com/2018/08/23/cli-improved
-# https://github.com/sharkdp/bat
 alias cat="bat"
-# https://github.com/junegunn/fzf
 alias preview="fzf --preview 'bat --color \"always\" {}'"
-# http://hisham.hm/htop/
+# add support for ctrl+o to open selected file in VS Code
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias top="htop"
-# https://github.com/sharkdp/fd/
 alias find="fd"
-# https://dev.yorhel.nl/ncdu
-alias du="ncdu --color dark -rr -x --exclude .git"
-# https://tldr.sh/
-alias help='tldr'
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias help="tldr"
 
 # python pip
-alias python='python3'
-alias pip='pip3'
+alias python="python3"
+alias pip="pip3"
 
 # home directory in git repository
-alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
+alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME" 
