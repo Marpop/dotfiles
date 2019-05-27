@@ -75,6 +75,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Pure promt
+# ------------------------------------------------------------------------------
 # https://github.com/sindresorhus/pure
 autoload -U promptinit; promptinit
 prompt pure
@@ -88,6 +90,18 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR="micro"
 fi
+
+# zsh extensions https://github.com/zsh-users
+# ------------------------------------------------------------------------------
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_STRATEGY="match_prev_cmd"
+
+# asdf
+# ------------------------------------------------------------------------------
+# https://github.com/asdf-vm/asdf/issues/428
+export ASDF_DIR=$(brew --prefix asdf)
 
 # aliases
 # ------------------------------------------------------------------------------
@@ -122,12 +136,3 @@ alias pip="pip3"
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
-
-# zsh extensions https://github.com/zsh-users
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_STRATEGY="match_prev_cmd"
-
-# https://github.com/asdf-vm/asdf/issues/428
-export ASDF_DIR=$(brew --prefix asdf)
