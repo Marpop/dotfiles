@@ -122,6 +122,7 @@ alias pip="pip3"
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
+
 # zsh extensions https://github.com/zsh-users
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
