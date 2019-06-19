@@ -135,4 +135,3 @@ alias pip="pip3"
 
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
-
