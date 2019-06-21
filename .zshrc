@@ -131,4 +131,3 @@ alias help="tldr"
 
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
-
