@@ -129,5 +129,9 @@ alias find="fd"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias help="tldr"
 
+# python pip
+alias python="python3"
+alias pip="pip3"
+
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
