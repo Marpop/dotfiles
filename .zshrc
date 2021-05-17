@@ -71,6 +71,9 @@ plugins=(
     git
     iterm2
     osx
+    zsh-autosuggestions
+    history-substring-search
+    zsh-completions
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -97,6 +100,8 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY="match_prev_cmd"
+
+autoload -U compinit && compinit
 
 # asdf
 # ------------------------------------------------------------------------------
