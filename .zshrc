@@ -103,6 +103,12 @@ ZSH_AUTOSUGGEST_STRATEGY="match_prev_cmd"
 # https://github.com/asdf-vm/asdf/issues/428
 export ASDF_DIR=$(brew --prefix asdf)
 
+# apple chip
+# ------------------------------------------------------------------------------
+arm() {
+  arch -x86_64 $@
+}
+
 # aliases
 # ------------------------------------------------------------------------------
 # Make some of the file manipulation programs verbose
