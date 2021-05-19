@@ -135,10 +135,11 @@ alias cat="bat"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 # add support for ctrl+o to open selected file in VS Code
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
-alias top="htop"
+alias top="vtop"
 alias find="fd"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias help="tldr"
+alias rm="trash"
 
 # python pip
 alias python="python3"
