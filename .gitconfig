@@ -65,3 +65,5 @@
 # 	showUntrackedFiles = all
 # [transfer]
 # 	fsckobjects = true
+[pull]
+	ff = only
