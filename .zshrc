@@ -1,4 +1,3 @@
-# If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -133,8 +132,6 @@ alias jsonf="python -m json.tool"
 # https://remysharp.com/2018/08/23/cli-improved
 alias cat="bat"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
-# add support for ctrl+o to open selected file in VS Code
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias top="vtop"
 alias find="fd"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
@@ -147,3 +144,6 @@ alias pip="pip3"
 
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
+
+# docker
+alias dc="docker-compose"
