@@ -73,9 +73,25 @@ plugins=(
     zsh-autosuggestions
     history-substring-search
     zsh-completions
+    alias-finder
+    common-aliases
+    copydir
+    copyfile
+    docker
+    docker-compose
+    dotenv
+    extract
+    jira
+    jsontools
+    vscode
+    web-search
+    z
     )
 
 source $ZSH/oh-my-zsh.sh
+
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
+ZSH_ALIAS_FINDER_AUTOMATIC=true
 
 # Pure promt
 # ------------------------------------------------------------------------------
@@ -115,20 +131,6 @@ arm() {
 
 # aliases
 # ------------------------------------------------------------------------------
-# Make some of the file manipulation programs verbose
-alias mv="mv -v"
-alias rm="rm -vi"
-alias cp="cp -v"
-# Clear the screen of your clutter
-alias c="clear"
-alias cl="clear;ls;pwd"
-# GREP Motifications
-alias grep="grep --color"
-alias grepp="grep -P --color"
-# Json tools (pipe unformatted to these to nicely format the JSON)
-alias json="python -m json.tool"
-alias jsonf="python -m json.tool"
-
 # https://remysharp.com/2018/08/23/cli-improved
 alias cat="bat"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
