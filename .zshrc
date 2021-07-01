@@ -142,3 +142,5 @@ alias rm="trash"
 
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
+
+alias c="clear"
