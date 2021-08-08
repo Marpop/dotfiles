@@ -140,7 +140,11 @@ alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias help="tldr"
 alias rm="trash"
 
+# https://www.wezm.net/technical/2019/10/useful-command-line-tools/
+alias ls="exa"
+
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
 alias c="clear"
+
