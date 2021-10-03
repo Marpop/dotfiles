@@ -95,6 +95,7 @@ ZSH_ALIAS_FINDER_AUTOMATIC=true
 # ------------------------------------------------------------------------------
 # https://github.com/sindresorhus/pure
 autoload -U promptinit; promptinit
+prompt pure
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -132,16 +133,3 @@ alias ls="exa"
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
 alias c="clear"
-
-# Install all
-"""
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-brew install exa bat fzf trash fd ncdu node pure
-
-npm install -g vtop tldr
-
-prompt pure
-'""'
