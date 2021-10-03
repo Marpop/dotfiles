@@ -81,11 +81,9 @@ plugins=(
     docker-compose
     dotenv
     extract
-    jira
     jsontools
     vscode
     web-search
-    z
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -93,11 +91,10 @@ source $ZSH/oh-my-zsh.sh
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
 ZSH_ALIAS_FINDER_AUTOMATIC=true
 
-# Pure promt
+# Pure prompt
 # ------------------------------------------------------------------------------
 # https://github.com/sindresorhus/pure
 autoload -U promptinit; promptinit
-prompt pure
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -116,31 +113,19 @@ source /usr/local/share/zsh-history-substring-search/zsh-history-substring-searc
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY="match_prev_cmd"
 
-autoload -U compinit && compinit
-
-# asdf
-# ------------------------------------------------------------------------------
-# https://github.com/asdf-vm/asdf/issues/428
-export ASDF_DIR=$(brew --prefix asdf)
-
-# apple chip
-# ------------------------------------------------------------------------------
-arm() {
-  arch -x86_64 $@
-}
-
 # aliases
 # ------------------------------------------------------------------------------
 # https://remysharp.com/2018/08/23/cli-improved
+# https://www.wezm.net/technical/2019/10/useful-command-line-tools/
 alias cat="bat"
+# https://github.com/junegunn/fzf#using-homebrew
 alias preview="fzf --preview 'bat --color \"always\" {}'"
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 alias top="vtop"
 alias find="fd"
-alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias du="ncdu --color dark -rr -x --exclude .git"
 alias help="tldr"
 alias rm="trash"
-
-# https://www.wezm.net/technical/2019/10/useful-command-line-tools/
 alias ls="exa"
 
 # home directory in git repository
@@ -148,3 +133,15 @@ alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
 alias c="clear"
 
+# Install all
+"""
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+brew install exa bat fzf trash fd ncdu node pure
+
+npm install -g vtop tldr
+
+prompt pure
+'""'
