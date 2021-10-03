@@ -16,3 +16,6 @@ brew install exa bat fzf trash fd ncdu node pure zsh-history-substring-search zs
 ```
 npm install -g vtop tldr diff-so-fancy
 ```
+```
+brew tap homebrew/cask-fonts && brew install --cask font-fira-code
+```
