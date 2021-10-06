@@ -72,7 +72,6 @@ plugins=(
     osx
     zsh-autosuggestions
     history-substring-search
-    zsh-completions
     alias-finder
     common-aliases
     copydir
