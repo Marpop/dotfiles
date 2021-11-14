@@ -84,6 +84,12 @@ plugins=(
     jsontools
     vscode
     web-search
+    sudo
+    web-search
+    copydir
+    copyfile
+    copybuffer
+    history
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -112,7 +118,6 @@ fi
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_STRATEGY="match_prev_cmd"
 
 # aliases
 # ------------------------------------------------------------------------------
