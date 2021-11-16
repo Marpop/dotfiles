@@ -90,6 +90,7 @@ plugins=(
     copyfile
     copybuffer
     history
+    fzf
     )
 
 source $ZSH/oh-my-zsh.sh
