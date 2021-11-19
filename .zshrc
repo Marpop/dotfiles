@@ -69,7 +69,7 @@ plugins=(
     brew
     git
     iterm2
-    osx
+    macos
     zsh-autosuggestions
     history-substring-search
     zsh-completions
