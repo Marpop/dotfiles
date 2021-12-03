@@ -91,6 +91,7 @@ plugins=(
     copybuffer
     history
     fzf
+    kubectl
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -139,3 +140,9 @@ alias ls="exa"
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
 alias c="clear"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '~/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '~/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '~/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '~/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
