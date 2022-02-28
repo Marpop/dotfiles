@@ -75,7 +75,6 @@ plugins=(
     zsh-completions
     alias-finder
     common-aliases
-    copydir
     copyfile
     docker
     docker-compose
@@ -86,7 +85,7 @@ plugins=(
     web-search
     sudo
     web-search
-    copydir
+    copypath
     copyfile
     copybuffer
     history
