@@ -1,3 +1,7 @@
+# Fig pre block. Keep at the top of this file.
+export PATH="${PATH}:${HOME}/.local/bin"
+eval "$(fig init zsh pre)"
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -145,3 +149,7 @@ if [ -f '/Users/marcinpoplawski/Downloads/google-cloud-sdk/path.zsh.inc' ]; then
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/marcinpoplawski/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/marcinpoplawski/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Fig post block. Keep at the bottom of this file.
+eval "$(fig init zsh post)"
+
