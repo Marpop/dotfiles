@@ -1,7 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-export PATH="${PATH}:${HOME}/.local/bin"
-eval "$(fig init zsh pre)"
-
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -138,18 +136,10 @@ alias du="ncdu --color dark -rr -x --exclude .git"
 alias help="tldr"
 alias rm="trash"
 alias ls="exa"
+alias c="clear"
 
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
-alias c="clear"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/marcinpoplawski/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/marcinpoplawski/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/marcinpoplawski/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/marcinpoplawski/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Fig post block. Keep at the bottom of this file.
-eval "$(fig init zsh post)"
-
+. "$HOME/.fig/shell/zshrc.post.zsh"
