@@ -138,6 +138,8 @@ alias rm="trash"
 alias ls="exa"
 alias c="clear"
 
+alias mm="make manage"
+
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
