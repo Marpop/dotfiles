@@ -72,9 +72,7 @@ plugins=(
     git
     iterm2
     macos
-    zsh-autosuggestions
     history-substring-search
-    zsh-completions
     alias-finder
     common-aliases
     copyfile
@@ -93,6 +91,9 @@ plugins=(
     history
     fzf
     kubectl
+    zsh-completions
+    zsh-autosuggestions
+    zsh-syntax-highlighting  # must be the last plugin
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -115,12 +116,6 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR="micro"
 fi
-
-# zsh extensions https://github.com/zsh-users
-# ------------------------------------------------------------------------------
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # aliases
 # ------------------------------------------------------------------------------
