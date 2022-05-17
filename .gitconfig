@@ -38,7 +38,10 @@
 	autocrlf = input
 	excludesfile = /Users/marcinpoplawski/.gitignore_global
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-# [diff]
+	pager = delta
+
+[diff]
+    colorMoved = default
 # 	tool = icdiff
 # 	mnemonicPrefix = true
 # 	renames = true
@@ -49,14 +52,13 @@
 # [log]
 # 	abbrevCommit = true
 # 	follow = true
-# [merge]
-# 	conflictstyle = diff3
+[merge]
+    conflictstyle = diff3
 # 	ff = only
 # [mergetool]
 # 	prompt = false
-[pager]
-	diff = diff-so-fancy | less --tabs=1,5 -RFX
-	show = diff-so-fancy | less --tabs=1,5 -RFX
+[pull]
+	ff = only
 # [push]
 # 	default = simple
 # 	followTags = true
@@ -65,5 +67,8 @@
 # 	showUntrackedFiles = all
 # [transfer]
 # 	fsckobjects = true
-[pull]
-	ff = only
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    light = false    # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
