@@ -1,74 +1,20 @@
 [user]
 	email = marcin_poplawski@icloud.com
 	name = Marcin Popławski
-# [alias]
-# 	prune = fetch --prune
-# 	undo = reset --soft HEAD^
-# 	stash-all = stash save --include-untracked
-# [color]
-# 	branch = auto
-# 	diff = auto
-# 	status = auto
-#         showbranch = auto
-# 	ui = true
-# [color "branch"]
-# 	current = yellow reverse
-# 	local = yellow
-# 	remote = green
-# [color "diff"]
-# 	meta = yellow
-# 	frag = magenta bold
-# 	old = red bold
-# 	new = green bold
-# 	commit = yellow bold
-# 	whitespace = red reverse
-# [color "status"]
-# 	added = yellow
-# 	changed = green
-# 	untracked = cyan
-# [color "diff-highlight"]
-# 	oldNormal = red bold
-# 	oldHighlight = red bold 52
-# 	newNormal = green bold
-# 	newHighlight = green bold 22
-# [commit]
-#  	gpgsign = true
+[alias]
+	prune = fetch --prune
+	undo = reset --soft HEAD^
+	stash-all = stash save --include-untracked
 [core]
 	editor = micro
 	autocrlf = input
 	excludesfile = ~/.gitignore_global
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	pager = delta
-
-[diff]
-    colorMoved = default
-# 	tool = icdiff
-# 	mnemonicPrefix = true
-# 	renames = true
-# [difftool]
-#   prompt = false
-# [difftool "icdiff"]
-#   cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
-# [log]
-# 	abbrevCommit = true
-# 	follow = true
 [merge]
     conflictstyle = diff3
-# 	ff = only
-# [mergetool]
-# 	prompt = false
 [pull]
 	ff = only
-# [push]
-# 	default = simple
-# 	followTags = true
-# [status]
-# 	submoduleSummary = true
-# 	showUntrackedFiles = all
-# [transfer]
-# 	fsckobjects = true
-[interactive]
-    diffFilter = delta --color-only
-[delta]
-    navigate = true  # use n and N to move between diff sections
-    light = false    # set to true if you're in a terminal w/ a light background color
+[pager]
+	diff = diff-so-fancy | less --tabs=1,5 -RFX
+	show = diff-so-fancy | less --tabs=1,5 -RFX
