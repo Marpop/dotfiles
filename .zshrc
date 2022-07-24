@@ -1,7 +1,9 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/marpop/.oh-my-zsh"
+export ZSH="/Users/marcinpoplawski/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -69,13 +71,10 @@ plugins=(
     brew
     git
     iterm2
-    osx
-    zsh-autosuggestions
+    macos
     history-substring-search
-    zsh-completions
     alias-finder
     common-aliases
-    copydir
     copyfile
     docker
     docker-compose
@@ -84,6 +83,17 @@ plugins=(
     jsontools
     vscode
     web-search
+    sudo
+    web-search
+    copypath
+    copyfile
+    copybuffer
+    history
+    fzf
+    kubectl
+    zsh-completions
+    zsh-autosuggestions
+    zsh-syntax-highlighting  # must be the last plugin
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -107,13 +117,6 @@ else
   export EDITOR="micro"
 fi
 
-# zsh extensions https://github.com/zsh-users
-# ------------------------------------------------------------------------------
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_STRATEGY="match_prev_cmd"
-
 # aliases
 # ------------------------------------------------------------------------------
 # https://remysharp.com/2018/08/23/cli-improved
@@ -122,14 +125,23 @@ alias cat="bat"
 # https://github.com/junegunn/fzf#using-homebrew
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
-alias top="vtop"
+alias top="gtop"
 alias find="fd"
 alias du="ncdu --color dark -rr -x --exclude .git"
+alias df="command duf"
 alias help="tldr"
 alias rm="trash"
 alias ls="exa"
+alias c="clear"
+
+alias mm="make manage"
+
+eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias FUCK)
 
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
-alias c="clear"
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
