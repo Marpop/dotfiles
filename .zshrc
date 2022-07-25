@@ -91,6 +91,7 @@ plugins=(
     history
     fzf
     kubectl
+    elixir
     zsh-completions
     zsh-autosuggestions
     zsh-syntax-highlighting  # must be the last plugin
