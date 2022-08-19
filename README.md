@@ -11,7 +11,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ```
 ### brew packages
 ```
-brew install exa bat fzf trash fd ncdu node pure zsh-history-substring-search zsh-autosuggestions zsh-completions zsh-syntax-highlighting micro thefuck elixir fig
+brew install exa bat fzf trash fd ncdu gtop node pure zsh-history-substring-search zsh-autosuggestions zsh-completions zsh-syntax-highlighting micro thefuck elixir fig
 ```
 ### npm packages
 ```
