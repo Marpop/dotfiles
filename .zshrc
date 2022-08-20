@@ -135,6 +135,9 @@ alias rm="trash"
 alias ls="exa"
 alias c="clear"
 
+# python/django
+alias python="python3"
+alias pip="pip3"
 alias mm="make manage"
 
 eval $(thefuck --alias)
