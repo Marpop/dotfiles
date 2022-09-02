@@ -75,7 +75,6 @@ plugins=(
     history-substring-search
     alias-finder
     common-aliases
-    copyfile
     docker
     docker-compose
     dotenv
