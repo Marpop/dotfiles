@@ -89,7 +89,6 @@ plugins=(
     copybuffer
     history
     fzf
-    kubectl
     elixir
     zsh-completions
     zsh-autosuggestions
