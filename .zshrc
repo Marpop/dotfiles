@@ -138,6 +138,13 @@ alias c="clear"
 alias python="python3"
 alias pip="pip3"
 alias mm="make manage"
+alias docker_django="dcr --rm django"
+alias django_test="docker_django pytest"
+alias django_format="docker_django black . && docker_django isort --atomic . "
+alias django_lint="docker_django mypy . && docker_django flake8 . && docker_django pylint config/ apps/"
+alias django_all="django_test && django_format && django_lint"
+alias django_manage="docker_django python manage.py"
+alias django_migrations="django_manage makemigrations && django_manage migrate"
 
 eval $(thefuck --alias)
 # You can use whatever you want as an alias, like for Mondays:
