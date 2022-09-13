@@ -1,5 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -141,9 +141,10 @@ alias docker_django="dcr --rm django"
 alias django_test="docker_django pytest"
 alias django_format="docker_django black . && docker_django isort --atomic . "
 alias django_lint="docker_django mypy . && docker_django flake8 . && docker_django pylint config/ apps/"
-alias django_all="django_test && django_format && django_lint"
 alias django_manage="docker_django python manage.py"
 alias django_migrations="django_manage makemigrations && django_manage migrate"
+alias django_shell_plus="django_manage shell_plus"
+
 
 eval $(thefuck --alias)
 # You can use whatever you want as an alias, like for Mondays:
@@ -153,4 +154,4 @@ eval $(thefuck --alias FUCK)
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
 # Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
