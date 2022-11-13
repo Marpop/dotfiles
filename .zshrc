@@ -5,6 +5,19 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/marpop/.oh-my-zsh"
 
+# Handle Mac platforms
+CPU=$(uname -p)
+if [[ "$CPU" == "arm" ]]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+    export EDITOR=/opt/homebrew/bin/nano
+    alias nano=/opt/homebrew/bin/nano
+    alias oldbrew=/usr/local/bin/brew
+else
+    export PATH="/usr/local/bin:$PATH"
+    export EDITOR=/usr/local/bin/nano
+    alias nano=/usr/local/bin/nano
+fi
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -72,8 +85,6 @@ plugins=(
     git
     iterm2
     macos
-    history-substring-search
-    alias-finder
     common-aliases
     docker
     docker-compose
@@ -90,9 +101,6 @@ plugins=(
     history
     fzf
     elixir
-    zsh-completions
-    zsh-autosuggestions
-    zsh-syntax-highlighting  # must be the last plugin
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -137,18 +145,6 @@ alias c="clear"
 alias python="python3"
 alias pip="pip3"
 alias mm="make manage"
-alias docker_django="dcr --rm django"
-alias django_test="docker_django pytest"
-alias django_format="docker_django black . && docker_django isort --atomic . "
-alias django_lint="docker_django mypy . && docker_django flake8 . && docker_django pylint config/ apps/"
-alias django_manage="docker_django python manage.py"
-alias django_migrations="django_manage makemigrations && django_manage migrate"
-alias django_shell_plus="django_manage shell_plus"
-
-
-eval $(thefuck --alias)
-# You can use whatever you want as an alias, like for Mondays:
-eval $(thefuck --alias FUCK)
 
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
