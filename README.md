@@ -1,6 +1,12 @@
 # dotfiles
 https://www.electricmonk.nl/log/2015/06/22/keep-your-home-dir-in-git-with-a-detached-working-directory/
 
+```
+git clone git@github.com:Marpop/dotfiles.git ./.dotfiles
+alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
+dgit reset --hard
+```
+
 ### Homebrew
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
