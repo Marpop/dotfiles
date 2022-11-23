@@ -146,6 +146,9 @@ alias python="python3"
 alias pip="pip3"
 alias mm="make manage"
 
+# docker
+alias dcra="docker-compose run --rm app"
+
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
