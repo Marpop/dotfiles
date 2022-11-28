@@ -6,28 +6,35 @@ git clone git@github.com:Marpop/dotfiles.git ./.dotfiles
 alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 dgit reset --hard
 ```
-
+## macOS
 ### Homebrew
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-### oh-my-zsh
-```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
 ### brew packages
 ```
-brew install exa bat fzf trash fd ncdu gtop node pure zsh-history-substring-search zsh-autosuggestions zsh-completions zsh-syntax-highlighting micro thefuck elixir npm fig 
-```
-### packages
-```
-npm install -g vtop tldr diff-so-fancy
+brew install exa bat fzf trash fd ncdu gtop node pure micro thefuck elixir npm fig 
 ```
 ### fira-code font
 ```
 brew tap homebrew/cask-fonts && brew install --cask font-fira-code
 ```
-### Elixir plugin
+
+## common
+### oh-my-zsh
 ```
-cd ~/.oh-my-zsh/custom/plugins && git clone https://github.com/gusaiani/elixir-oh-my-zsh.git elixir
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
+### zsh plugins
+```
+git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search && \
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions && \
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-syntax-highlighting && \
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && \
+git clone https://github.com/gusaiani/elixir-oh-my-zsh.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/elixir
+```
+### npm packages
+```
+npm install -g vtop tldr diff-so-fancy
+```
+
