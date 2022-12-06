@@ -11,16 +11,26 @@ dgit reset --hard
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-### brew packages
+### packages
 ```
 brew install exa bat fzf trash fd ncdu gtop node pure micro thefuck elixir npm fig 
+```
+### npm packages
+```
+npm install -g vtop tldr diff-so-fancy
 ```
 ### fira-code font
 ```
 brew tap homebrew/cask-fonts && brew install --cask font-fira-code
 ```
 
+## ubuntu
+### zsh
+```
+sudo apt install zsh
+```
 ## common
+
 ### oh-my-zsh
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -33,8 +43,5 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && \
 git clone https://github.com/gusaiani/elixir-oh-my-zsh.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/elixir
 ```
-### npm packages
-```
-npm install -g vtop tldr diff-so-fancy
-```
+
 
