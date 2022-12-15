@@ -31,7 +31,4 @@ brew install exa bat fzf trash fd ncdu gtop node pure micro thefuck elixir npm f
 ```
 npm install -g vtop tldr diff-so-fancy
 ```
-### fira-code font
-```
-brew tap homebrew/cask-fonts && brew install --cask font-fira-code
-```
+
