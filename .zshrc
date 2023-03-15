@@ -1,36 +1,8 @@
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/marpop/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
-# Handle Mac platforms
-CPU=$(uname -p)
-if [[ "$CPU" == "arm" ]]; then
-    export PATH="/opt/homebrew/bin:$PATH"
-    export EDITOR=/opt/homebrew/bin/nano
-    alias nano=/opt/homebrew/bin/nano
-    alias oldbrew=/usr/local/bin/brew
-else
-    export PATH="/usr/local/bin:$PATH"
-    export EDITOR=/usr/local/bin/nano
-    alias nano=/usr/local/bin/nano
-fi
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME=""
-
-# https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Options.md
-# SPACESHIP_TIME_SHOW="false"
-# SPACESHIP_KUBECONTEXT_SHOW="false"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -44,6 +16,9 @@ ZSH_THEME=""
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -70,14 +45,12 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
 plugins=(
     brew
     git
@@ -103,17 +76,11 @@ plugins=(
     zsh-completions
     zsh-syntax-highlighting
     zsh-autosuggestions
-    )
-
-# fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+)
 
 source $ZSH/oh-my-zsh.sh
 
-# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
-ZSH_ALIAS_FINDER_AUTOMATIC=true
-
 # Pure prompt
-# ------------------------------------------------------------------------------
 # https://github.com/sindresorhus/pure
 autoload -U promptinit; promptinit
 prompt pure
@@ -122,36 +89,35 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
+# https://github.com/zyedidia/micro 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="nano"
 else
   export EDITOR="micro"
 fi
 
-# aliases
-# ------------------------------------------------------------------------------
-# https://remysharp.com/2018/08/23/cli-improved
-# https://www.wezm.net/technical/2019/10/useful-command-line-tools/
-alias cat="bat"
-# https://github.com/junegunn/fzf#using-homebrew
-alias preview="fzf --preview 'bat --color \"always\" {}'"
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
-alias top="gtop"
-alias find="fd"
-alias du="ncdu --color dark -rr -x --exclude .git"
-alias df="command duf"
-alias help="tldr"
-alias rm="trash"
-alias ls="exa"
-alias c="clear"
+# https://github.com/nvbn/thefuck
+eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias FUCK)
 
-# python/django
+# aliases
+ZSH_ALIAS_FINDER_AUTOMATIC=true # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
+alias ls="exa" # https://github.com/ogham/exa
+alias cat="bat" # https://github.com/sharkdp/bat
+alias preview="fzf --preview 'bat --color \"always\" {}'" # https://github.com/junegunn/fzf 
+alias top="gtop" # https://github.com/aksakalli/gtop 
+alias find="fd" # https://github.com/sharkdp/fd
+alias du="ncdu --color dark -rr -x --exclude .git" # https://github.com/rofl0r/ncdu 
+alias df="command duf" # https://github.com/muesli/duf 
+alias help="tldr" # https://github.com/tldr-pages/tldr 
+alias rm="trash-put" # https://github.com/andreafrancia/trash-cli
+alias c="clear" 
+alias src="source ~/.zshrc"
+
+# python
 alias python="python3"
 alias pip="pip3"
-alias mm="make manage"
-
-# docker
-alias dcra="docker-compose run --rm app"
 
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
