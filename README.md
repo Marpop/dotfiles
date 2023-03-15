@@ -39,7 +39,8 @@ https://github.com/jesseduffield/lazygit \
 https://github.com/jesseduffield/lazydocker \
 https://github.com/sindresorhus/pure \
 https://github.com/aksakalli/gtop \
-https://github.com/tldr-pages/tldr
+https://github.com/tldr-pages/tldr \
+https://github.com/muesli/duf 
 
 ### macOS
 https://brew.sh/
@@ -47,12 +48,12 @@ https://brew.sh/
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 ```
-brew install exa bat fzf fd ncdu micro thefuck elixir delta lazygit lazydocker node
+brew install exa bat fzf fd ncdu micro thefuck elixir delta lazygit lazydocker node duf
 pip3 install trash-cli
 ```
 ### ubuntu
 ```
-sudo apt install exa bat fzf fd-find ncdu micro elixir 
+sudo apt install exa bat fzf fd-find ncdu micro elixir duf
 pip3 install thefuck trash-cli
 ```
 ```
