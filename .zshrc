@@ -89,30 +89,25 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# https://github.com/zyedidia/micro 
+# https://github.com/zyedidia/micro
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="nano"
 else
   export EDITOR="micro"
 fi
 
-# https://github.com/nvbn/thefuck
-eval $(thefuck --alias)
-# You can use whatever you want as an alias, like for Mondays:
-eval $(thefuck --alias FUCK)
-
 # aliases
 ZSH_ALIAS_FINDER_AUTOMATIC=true # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
 alias ls="exa" # https://github.com/ogham/exa
 alias cat="catbat" # https://github.com/sharkdp/bat
-alias preview="fzf --preview 'bat --color \"always\" {}'" # https://github.com/junegunn/fzf 
-alias top="gtop" # https://github.com/aksakalli/gtop 
+alias preview="fzf --preview 'bat --color \"always\" {}'" # https://github.com/junegunn/fzf
+alias top="gtop" # https://github.com/aksakalli/gtop
 alias find="fd" # https://github.com/sharkdp/fd
-alias du="ncdu --color dark -rr -x --exclude .git" # https://github.com/rofl0r/ncdu 
-alias df="command duf" # https://github.com/muesli/duf 
-alias help="tldr" # https://github.com/tldr-pages/tldr 
+alias du="ncdu --color dark -rr -x --exclude .git" # https://github.com/rofl0r/ncdu
+alias df="command duf" # https://github.com/muesli/duf
+alias help="tldr" # https://github.com/tldr-pages/tldr
 alias rm="trash-put" # https://github.com/andreafrancia/trash-cli
-alias c="clear" 
+alias c="clear"
 alias src="source ~/.zshrc"
 
 # python
