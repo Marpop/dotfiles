@@ -116,3 +116,6 @@ alias pip="pip3"
 
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
+
+# Created by `pipx` on 2023-07-27 16:50:04
+export PATH="$PATH:/Users/marpop/.local/bin"
