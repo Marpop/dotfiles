@@ -57,8 +57,8 @@ plugins=(
     iterm2
     macos
     common-aliases
-    docker
-    docker-compose
+    # docker
+    # docker-compose
     dotenv
     extract
     jsontools
