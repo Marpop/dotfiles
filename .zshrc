@@ -11,7 +11,7 @@ export PATH=/opt/homebrew/bin:$PATH
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME=""
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -107,8 +107,8 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+# export LC_ALL=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # https://github.com/zyedidia/micro
@@ -124,7 +124,7 @@ fi
 # aliases
 ZSH_ALIAS_FINDER_AUTOMATIC=true # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
 alias ls="exa" # https://github.com/ogham/exa
-alias cat="catbat" # https://github.com/sharkdp/bat
+alias cat="bat" # https://github.com/sharkdp/bat
 alias preview="fzf --preview 'bat --color \"always\" {}'" # https://github.com/junegunn/fzf
 alias top="gtop" # https://github.com/aksakalli/gtop
 alias find="fd" # https://github.com/sharkdp/fd
