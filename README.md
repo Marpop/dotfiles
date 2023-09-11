@@ -18,56 +18,27 @@ https://github.com/zsh-users/zsh-syntax-highlighting \
 https://github.com/zsh-users/zsh-autosuggestions \
 https://github.com/gusaiani/elixir-oh-my-zsh
 ```
-git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search 
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-syntax-highlighting 
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
+git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/gusaiani/elixir-oh-my-zsh.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/elixir
+```
+
+## homebrew
+https://brew.sh/
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ## packages
 https://remysharp.com/2018/08/23/cli-improved \
 https://www.wezm.net/technical/2019/10/useful-command-line-tools/ \
 https://github.com/dandavison/delta \
+https://github.com/junegunn/fzf#using-homebrew
 
-### macOS
-
-https://brew.sh/
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
 ```
 brew install exa bat fzf fd ncdu micro thefuck elixir delta lazygit lazydocker node duf
 pip3 install trash-cli
+sudo npm install -g pure-prompt gtop tld
 ```
-https://github.com/junegunn/fzf#using-homebrew
-
-### ubuntu
-
-```
-sudo apt install exa bat fzf fd-find ncdu micro elixir duf
-pip3 install thefuck trash-cli
-```
-```
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*') 
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" 
-tar xf lazygit.tar.gz lazygit 
-sudo install lazygit /usr/local/bin
-```
-```
-LAZYDOCKER_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazydocker/releases/latest" | grep -Po '"tag_name": "v\K[0-9.]+')
-curl -Lo lazydocker.tar.gz "https://github.com/jesseduffield/lazydocker/releases/latest/download/lazydocker_${LAZYDOCKER_VERSION}_Linux_x86_64.tar.gz"
-mkdir lazydocker-temp
-tar xf lazydocker.tar.gz -C lazydocker-temp
-sudo mv lazydocker-temp/lazydocker /usr/local/bin
-lazydocker --version
-rm -rf lazydocker.tar.gz lazydocker-temp
-```
-https://dandavison.github.io/delta/installation.html \
-https://github.com/nodesource/distributions#debinstall
-
-### common
-```
-sudo npm install -g pure-prompt gtop tldr 
-```
-
