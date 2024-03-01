@@ -1,6 +1,6 @@
 [user]
     name = Marcin Popławski
-    email = marpop8@gmail.com
-
+	email = marcin_poplawski@icloud.com
+	timezone = Europe/Warsaw
 [core]
     editor = micro
