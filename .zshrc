@@ -121,6 +121,16 @@ fi
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+# pyenv virtualenv
+eval "$(pyenv virtualenv-init -)"
+
+# poetry
+export PATH="$HOME/.local/bin:$PATH"
+
 # aliases
 ZSH_ALIAS_FINDER_AUTOMATIC=true # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
 alias ls="exa" # https://github.com/ogham/exa
@@ -141,3 +151,4 @@ alias pip="pip3"
 
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
+
