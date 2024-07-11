@@ -149,3 +149,5 @@ alias pip="pip3"
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
+# warpify subshell
+printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh"}}\x9c'
