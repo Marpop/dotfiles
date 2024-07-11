@@ -93,11 +93,11 @@ plugins=(
     copybuffer
     history
     fzf
-    elixir
-    zsh-history-substring-search
-    zsh-completions
-    zsh-syntax-highlighting
-    zsh-autosuggestions
+    # elixir
+    # zsh-history-substring-search
+    # zsh-completions
+    # zsh-syntax-highlighting
+    # zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
