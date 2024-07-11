@@ -133,7 +133,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # aliases
 ZSH_ALIAS_FINDER_AUTOMATIC=true # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
-alias ls="exa" # https://github.com/ogham/exa
 alias cat="bat" # https://github.com/sharkdp/bat
 alias preview="fzf --preview 'bat --color \"always\" {}'" # https://github.com/junegunn/fzf
 alias top="gtop" # https://github.com/aksakalli/gtop

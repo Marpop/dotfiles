@@ -38,7 +38,7 @@ https://github.com/dandavison/delta \
 https://github.com/junegunn/fzf#using-homebrew
 
 ```
-brew install exa bat fzf fd ncdu micro thefuck elixir delta lazygit lazydocker node duf
+brew install bat fzf fd ncdu micro thefuck elixir delta lazygit lazydocker node duf
 pip3 install trash-cli
 sudo npm install -g pure-prompt gtop tld
 ```
