@@ -146,12 +146,11 @@ alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
 # giap project
 GIAP_IHUB2_BE="ihub2-be"
-unfunction be bem 2>/dev/null # leftovers from older versions of this file
-alias be="docker exec -it $GIAP_IHUB2_BE"
-alias bem="be python manage.py"
-alias be-makemigrations="bem makemigrations"
-alias be-migrate-all="bem migrate_schemas"
-alias be-migrate-shared="bem migrate_schemas --shared"
+alias de="docker exec -it $GIAP_IHUB2_BE"
+alias de-m="be python manage.py"
+alias de-makemigrations="de-m makemigrations"
+alias de-migrate-all="de-m migrate_schemas"
+alias de-migrate-shared="de-m migrate_schemas --shared"
 
 # warpify subshell
 [[ -z $WARP_BOOTSTRAPPED ]] && printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh"}}\x9c'
