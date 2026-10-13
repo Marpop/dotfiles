@@ -147,8 +147,8 @@ alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 # giap project
 GIAP_IHUB2_BE="ihub2-be"
 alias de="docker exec -it $GIAP_IHUB2_BE"
-alias de-m="be python manage.py"
-alias de-makemigrations="de-m makemigrations"
+alias de-m="de python manage.py"
+alias de-makemigrations="de-m makemigrations --no-header"
 alias de-migrate-all="de-m migrate_schemas"
 alias de-migrate-shared="de-m migrate_schemas --shared"
 
