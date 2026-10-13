@@ -121,6 +121,9 @@ fi
 # poetry
 export PATH="$HOME/.local/bin:$PATH"
 
+# docker
+export DOCKER_CLI_HINTS=false
+
 # aliases
 ZSH_ALIAS_FINDER_AUTOMATIC=true # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
 alias cat="bat" # https://github.com/sharkdp/bat
@@ -130,7 +133,7 @@ alias find="fd" # https://github.com/sharkdp/fd
 alias du="ncdu --color dark -rr -x --exclude .git" # https://github.com/rofl0r/ncdu
 alias df="command duf" # https://github.com/muesli/duf
 alias help="tldr" # https://github.com/tldr-pages/tldr
-alias rm="trash-put" # https://github.com/andreafrancia/trash-cli
+alias rm="trash" # https://github.com/andreafrancia/trash-cli
 alias c="clear"
 alias src="source ~/.zshrc"
 
@@ -143,3 +146,4 @@ alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
 # warpify subshell
 printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh"}}\x9c'
+
