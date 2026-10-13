@@ -146,10 +146,9 @@ alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
 # work project
 PROJECT_BE="project-be"
-unalias be bem 2>/dev/null # leftovers from older versions of this file
-# -t only when attached to a terminal, so pipes and scripts work too
-function be { docker exec -it "$PROJECT_BE" "$@"; }
-function bem { be python manage.py "$@"; }
+unfunction be bem 2>/dev/null # leftovers from older versions of this file
+alias be='docker exec -it $PROJECT_BE'
+alias bem='be python manage.py'
 alias be-makemigrations="bem makemigrations"
 alias be-migrate-all="bem migrate_schemas"
 alias be-migrate-shared="bem migrate_schemas --shared"
