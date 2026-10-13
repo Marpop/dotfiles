@@ -148,7 +148,7 @@ alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 GIAP_IHUB2_BE="ihub2-be"
 unalias be bem 2>/dev/null # leftovers from older versions of this file
 # -t only when attached to a terminal, so pipes and scripts work too
-function be { docker exec -i $([[ -t 0 && -t 1 ]] && echo -t) "$GIAP_IHUB2_BE" "$@"; }
+function be { docker exec -it "$GIAP_IHUB2_BE" "$@"; }
 function bem { be python manage.py "$@"; }
 alias be-makemigrations="bem makemigrations"
 alias be-migrate-all="bem migrate_schemas"
