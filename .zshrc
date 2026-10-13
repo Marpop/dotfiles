@@ -87,12 +87,12 @@ plugins=(
     vscode
     web-search
     sudo
-    web-search
     copypath
     copyfile
     copybuffer
     history
     fzf
+    alias-finder
     # elixir
     # zsh-history-substring-search
     # zsh-completions
@@ -125,7 +125,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export DOCKER_CLI_HINTS=false
 
 # aliases
-ZSH_ALIAS_FINDER_AUTOMATIC=true # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
+zstyle ':omz:plugins:alias-finder' autoload yes # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
 alias cat="bat" # https://github.com/sharkdp/bat
 alias preview="fzf --preview 'bat --color \"always\" {}'" # https://github.com/junegunn/fzf
 alias top="gtop" # https://github.com/aksakalli/gtop
@@ -144,6 +144,15 @@ alias pip="pip3"
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
-# warpify subshell
-printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh"}}\x9c'
+# giap project
+GIAP_IHUB2_BE="ihub2-be"
+unalias be bem 2>/dev/null # leftovers from older versions of this file
+# -t only when attached to a terminal, so pipes and scripts work too
+function be { docker exec -i $([[ -t 0 && -t 1 ]] && echo -t) "$GIAP_IHUB2_BE" "$@"; }
+function bem { be python manage.py "$@"; }
+alias be-makemigrations="bem makemigrations"
+alias be-migrate-all="bem migrate_schemas"
+alias be-migrate-shared="bem migrate_schemas --shared"
 
+# warpify subshell
+[[ -z $WARP_BOOTSTRAPPED ]] && printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh"}}\x9c'
