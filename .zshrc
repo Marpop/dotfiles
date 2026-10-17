@@ -190,7 +190,7 @@ brewfile_commit() {
   fi
   local changes
   changes=$(dgit diff -U0 -- "$file" |
-    sed -nE 's/^([+-])(tap|brew|cask|mas|vscode|go|cargo|uv|npm) "([^"]+)".*/\1\3/p' |
+    sed -nE 's/^([+-])[a-z_]+ "([^"]+)".*/\1\2/p' | # any entry type: brew, cask, npm, flatpak...
     tr '\n' ' ')
   dgit diff --stat -- "$file"
   dgit commit -m "Update Brewfile: ${changes:-reorder/comments}" -- "$file" &&
