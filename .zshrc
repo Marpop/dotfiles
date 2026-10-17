@@ -152,5 +152,18 @@ alias de-makemigrations="de-m makemigrations --no-header"
 alias de-migrate-all="de-m migrate_schemas"
 alias de-migrate-shared="de-m migrate_schemas --shared"
 
+# homebrew
+export HOMEBREW_BUNDLE_FILE=~/dotfiles/Brewfile
+alias brew_backup=brew bundle dump --force
+brewup() {
+  brew update &&
+  brew upgrade --greedy &&
+  brew autoremove &&
+  brew cleanup &&
+  brew bundle dump --force --describe --file="${HOMEBREW_BUNDLE_FILE:-$HOME/.dotfiles/Brewfile}"
+  brew doctor
+  git -C ~/.dotfiles diff --stat -- Brewfile
+}
+
 # warpify subshell
 [[ -z $WARP_BOOTSTRAPPED ]] && printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh"}}\x9c'
