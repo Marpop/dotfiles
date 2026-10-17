@@ -42,7 +42,7 @@ https://github.com/junegunn/fzf#using-homebrew
 
 ```
 brew bundle install   # installs everything from ~/Brewfile (HOMEBREW_BUNDLE_FILE)
-brewup                # update + cleanup + refresh Brewfile + dgit status
-pip3 install trash-cli
+bru                   # update + upgrade --greedy + cleanup + dump Brewfile + auto-commit/push it
+                      # shell start reminds when bru hasn't run for 7+ dayspip3 install trash-cli
 sudo npm install -g pure-prompt gtop tld
 ```
