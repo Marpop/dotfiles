@@ -1,4 +1,5 @@
 tap "anomalyco/tap"
+tap "domt4/autoupdate", "https://github.com/DomT4/homebrew-autoupdate.git"
 # Extremely Fast Compression algorithm
 brew "lz4"
 # Official Amazon AWS command-line interface
@@ -11,6 +12,8 @@ brew "cookiecutter"
 brew "docker-compose"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
+# More intuitive version of du in rust
+brew "dust"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GitHub command-line tool
@@ -21,12 +24,16 @@ brew "git-delta"
 brew "git-filter-repo"
 # Interactive computing in Python
 brew "ipython"
+# Save disk space by cleaning non-essential files from software projects
+brew "kondo"
 # Lazier way to manage everything docker
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Modern and intuitive terminal-based text editor
 brew "micro"
+# Deep clean and optimize your Mac
+brew "mole"
 # NCurses Disk Usage
 brew "ncdu"
 # Open-source, cross-platform JavaScript runtime environment
@@ -45,6 +52,8 @@ brew "python@3.11"
 brew "python@3.12"
 # Terminal multiplexer
 brew "tmux"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode", trusted: true
 # OpenAI's coding agent that runs in your terminal
@@ -88,9 +97,3 @@ vscode "tamasfe.even-better-toml"
 vscode "tomoki1207.pdf"
 vscode "yzhang.markdown-all-in-one"
 vscode "ziyasal.vscode-open-in-github"
-npm "clmm"
-npm "gtop"
-npm "mac-cleaner-cli"
-npm "pnpm"
-npm "pure-prompt"
-npm "tld"
