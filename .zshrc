@@ -153,22 +153,22 @@ alias de-migrate-shared="de-m migrate_schemas --shared"
 # homebrew
 export HOMEBREW_BUNDLE_FILE="$HOME/Brewfile" # tracked by dgit, see !Brewfile in ~/.gitignore
 alias brew_backup="brew bundle dump --force"
-BRU_STAMP="$HOME/.cache/bru.stamp"
-bru() {
+BREWUP_STAMP="$HOME/.cache/brewup.stamp"
+brewup() {
   brew update &&
   brew upgrade --greedy &&
   brew autoremove &&
   brew cleanup &&
   brew bundle dump --force &&
   brewfile_commit &&
-  touch "$BRU_STAMP"
+  touch "$BREWUP_STAMP"
   brew doctor
 }
-# remind at shell start when bru hasn't run for 7+ days (glob qualifier, no subprocess)
+# remind at shell start when brewup hasn't run for 7+ days (glob qualifier, no subprocess)
 () {
   local stale=( $1(Nmd+6) ) # modified more than 6 full days ago, i.e. 7+ days
-  [[ ! -e $1 || -n $stale ]] && echo "🍺 bru not run for 7+ days - run: bru"
-} "$BRU_STAMP"
+  [[ ! -e $1 || -n $stale ]] && echo "🍺 brewup not run for 7+ days - run: brewup"
+} "$BREWUP_STAMP"
 
 # commit (and push) Brewfile if it changed, message lists added/removed packages
 brewfile_commit() {
