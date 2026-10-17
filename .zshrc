@@ -160,7 +160,7 @@ brewup() {
   brew upgrade --greedy &&
   brew autoremove &&
   brew cleanup &&
-  brew bundle dump --force --describe --file="${HOMEBREW_BUNDLE_FILE:-$HOME/.dotfiles/Brewfile}"
+  brew bundle dump --force --file="${HOMEBREW_BUNDLE_FILE:-$HOME/.dotfiles/Brewfile}"
   brew doctor
   git -C ~/.dotfiles diff --stat -- Brewfile
 }
