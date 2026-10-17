@@ -1,10 +1,13 @@
 # dotfiles
 https://www.electricmonk.nl/log/2015/06/22/keep-your-home-dir-in-git-with-a-detached-working-directory/
 ```
-git clone git@github.com:Marpop/dotfiles.git ./.dotfiles
+git clone --no-checkout git@github.com:Marpop/dotfiles.git ~/.dotfiles
 alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
 dgit reset --hard
+dgit config status.showUntrackedFiles no
 ```
+`~/.gitignore` ignores everything (`*`); files are tracked explicitly with `dgit add -f <file>`
+(or whitelisted with `!<file>`, like `Brewfile`).
 
 ## oh-my-zsh
 ```
@@ -38,7 +41,8 @@ https://github.com/dandavison/delta \
 https://github.com/junegunn/fzf#using-homebrew
 
 ```
-brew install bat fzf fd ncdu micro thefuck elixir delta lazygit lazydocker node duf
+brew bundle install   # installs everything from ~/Brewfile (HOMEBREW_BUNDLE_FILE)
+brewup                # update + cleanup + refresh Brewfile + dgit status
 pip3 install trash-cli
 sudo npm install -g pure-prompt gtop tld
 ```
