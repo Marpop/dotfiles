@@ -5,6 +5,7 @@
 [core]
     editor = micro
 	excludesfile = ~/.gitignore_global
+	pager = less -FRX
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

@@ -122,7 +122,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export DOCKER_CLI_HINTS=false
 
 # aliases
-zstyle ':omz:plugins:alias-finder' autoload yes # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
+zstyle ':omz:plugins:alias-finder' autoload no # manual: af "git status" - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
+alias af="alias-finder -l" # -l: also show longer aliases
 alias cat="bat" # https://github.com/sharkdp/bat
 alias preview="fzf --preview 'bat --color \"always\" {}'" # https://github.com/junegunn/fzf
 alias top="gtop" # https://github.com/aksakalli/gtop
@@ -151,15 +152,38 @@ alias de-migrate-shared="de-m migrate_schemas --shared"
 
 # homebrew
 export HOMEBREW_BUNDLE_FILE="$HOME/Brewfile" # tracked by dgit, see !Brewfile in ~/.gitignore
-alias brew_backup="brew bundle dump --force --describe"
-brewup() {
+alias brew_backup="brew bundle dump --force"
+BRU_STAMP="$HOME/.cache/bru.stamp"
+bru() {
   brew update &&
   brew upgrade --greedy &&
   brew autoremove &&
   brew cleanup &&
-  brew bundle dump --force --describe
+  brew bundle dump --force &&
+  brewfile_commit &&
+  touch "$BRU_STAMP"
   brew doctor
-  dgit status
+}
+# remind at shell start when bru hasn't run for 7+ days (glob qualifier, no subprocess)
+() {
+  local stale=( $1(Nmd+6) ) # modified more than 6 full days ago, i.e. 7+ days
+  [[ ! -e $1 || -n $stale ]] && echo "🍺 bru not run for 7+ days - run: bru"
+} "$BRU_STAMP"
+
+# commit (and push) Brewfile if it changed, message lists added/removed packages
+brewfile_commit() {
+  local file="$HOMEBREW_BUNDLE_FILE"
+  if dgit diff --quiet -- "$file"; then
+    echo "Brewfile: no changes"
+    return 0
+  fi
+  local changes
+  changes=$(dgit diff -U0 -- "$file" |
+    sed -nE 's/^([+-])(tap|brew|cask|mas|vscode|go|cargo|uv) "([^"]+)".*/\1\3/p' |
+    tr '\n' ' ')
+  dgit diff --stat -- "$file"
+  dgit commit -m "Update Brewfile: ${changes:-reorder/comments}" -- "$file" &&
+  dgit push
 }
 
 # warpify subshell
