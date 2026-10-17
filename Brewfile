@@ -1,5 +1,4 @@
 tap "anomalyco/tap"
-tap "domt4/autoupdate", "https://github.com/DomT4/homebrew-autoupdate.git"
 # Extremely Fast Compression algorithm
 brew "lz4"
 # Official Amazon AWS command-line interface
