@@ -13,6 +13,8 @@ brew "docker-compose"
 brew "duf"
 # More intuitive version of du in rust
 brew "dust"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GitHub command-line tool
@@ -49,6 +51,8 @@ brew "pre-commit"
 brew "python@3.11"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
+# Official tldr client written in Rust
+brew "tlrc"
 # Terminal multiplexer
 brew "tmux"
 # Extremely fast Python package installer and resolver, written in Rust
@@ -96,3 +100,7 @@ vscode "tamasfe.even-better-toml"
 vscode "tomoki1207.pdf"
 vscode "yzhang.markdown-all-in-one"
 vscode "ziyasal.vscode-open-in-github"
+npm "clmm"
+npm "gtop"
+npm "mac-cleaner-cli"
+npm "pnpm"
