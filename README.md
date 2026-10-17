@@ -1,5 +1,13 @@
 # dotfiles
 https://www.electricmonk.nl/log/2015/06/22/keep-your-home-dir-in-git-with-a-detached-working-directory/
+
+## 1. homebrew
+https://brew.sh/ (also installs Xcode Command Line Tools, incl. git)
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+## 2. dotfiles
 ```
 git clone --no-checkout git@github.com:Marpop/dotfiles.git ~/.dotfiles
 alias dgit='git --git-dir ~/.dotfiles/.git --work-tree=$HOME'
@@ -9,41 +17,18 @@ dgit config status.showUntrackedFiles no
 `~/.gitignore` ignores everything (`*`); files are tracked explicitly with `dgit add -f <file>`
 (or whitelisted with `!<file>`, like `Brewfile`).
 
-## oh-my-zsh
+## 3. packages
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+brew bundle install   # installs everything from ~/Brewfile (HOMEBREW_BUNDLE_FILE), incl. npm globals
+```
+Keep it up to date with `brewup`: update + upgrade --greedy + cleanup + dump Brewfile + auto-commit/push it.
+Shell start reminds when `brewup` hasn't run for 7+ days.
+
+## 4. oh-my-zsh
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
 ```
 
-## zsh plugins
-https://github.com/zsh-users/zsh-history-substring-search \
-https://github.com/zsh-users/zsh-completion \
-https://github.com/zsh-users/zsh-syntax-highlighting \
-https://github.com/zsh-users/zsh-autosuggestions \
-https://github.com/gusaiani/elixir-oh-my-zsh
-```
-git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/gusaiani/elixir-oh-my-zsh.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/elixir
-```
-
-## homebrew
-https://brew.sh/
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-## packages
+## inspiration
 https://remysharp.com/2018/08/23/cli-improved \
-https://www.wezm.net/technical/2019/10/useful-command-line-tools/ \
-https://github.com/dandavison/delta \
-https://github.com/junegunn/fzf#using-homebrew
-
-```
-brew bundle install   # installs everything from ~/Brewfile (HOMEBREW_BUNDLE_FILE)
-brewup                # update + upgrade --greedy + cleanup + dump Brewfile + auto-commit/push it
-                      # shell start reminds when brewup hasn't run for 7+ days
-pip3 install trash-cli
-sudo npm install -g pure-prompt gtop tld
-```
+https://www.wezm.net/technical/2019/10/useful-command-line-tools/

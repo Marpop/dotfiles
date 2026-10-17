@@ -127,11 +127,22 @@ alias af="alias-finder -l" # -l: also show longer aliases
 alias cat="bat" # https://github.com/sharkdp/bat
 alias preview="fzf --preview 'bat --color \"always\" {}'" # https://github.com/junegunn/fzf
 alias top="gtop" # https://github.com/aksakalli/gtop
+unalias fd 2>/dev/null # common-aliases defines fd='find . -type d -name', which shadows sharkdp/fd
 alias find="fd" # https://github.com/sharkdp/fd
 alias du="ncdu --color dark -rr -x --exclude .git" # https://github.com/rofl0r/ncdu
 alias df="command duf" # https://github.com/muesli/duf
 alias help="tldr" # https://github.com/tldr-pages/tldr
-alias rm="trash" # https://github.com/andreafrancia/trash-cli
+# rm -> macOS Trash (/usr/bin/trash, Finder "Put Back" works); drops rm flags like -rf it doesn't accept
+unalias rm 2>/dev/null # common-aliases defines rm='rm -i'
+rm() {
+  local files=() a only_files=0
+  for a in "$@"; do
+    if (( only_files )) || [[ $a != -* ]]; then files+=("$a")
+    elif [[ $a == -- ]]; then only_files=1
+    fi
+  done
+  /usr/bin/trash "${files[@]}"
+}
 alias c="clear"
 alias src="source ~/.zshrc"
 
@@ -179,7 +190,7 @@ brewfile_commit() {
   fi
   local changes
   changes=$(dgit diff -U0 -- "$file" |
-    sed -nE 's/^([+-])(tap|brew|cask|mas|vscode|go|cargo|uv) "([^"]+)".*/\1\3/p' |
+    sed -nE 's/^([+-])(tap|brew|cask|mas|vscode|go|cargo|uv|npm) "([^"]+)".*/\1\3/p' |
     tr '\n' ' ')
   dgit diff --stat -- "$file"
   dgit commit -m "Update Brewfile: ${changes:-reorder/comments}" -- "$file" &&
