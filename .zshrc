@@ -157,7 +157,7 @@ alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 PROJECT_BE="project-be"
 alias de="docker exec -it $PROJECT_BE"
 alias de-m="de python manage.py"
-alias de-makemigrations="de-m makemigrations --no-header"
+alias de-makemigrations="de-m makemigrations"
 alias de-migrate-all="de-m migrate_schemas"
 alias de-migrate-shared="de-m migrate_schemas --shared"
 
