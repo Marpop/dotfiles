@@ -167,7 +167,7 @@ alias brew_backup="brew bundle dump --force"
 BREWUP_STAMP="$HOME/.cache/brewup.stamp"
 brewup() {
   brew update &&
-  brew upgrade --greedy &&
+  brew upgrade --greedy --yes &&
   brew autoremove &&
   brew cleanup &&
   brew bundle dump --force &&
