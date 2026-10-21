@@ -1,12 +1,6 @@
 tap "anomalyco/tap"
-# Extremely Fast Compression algorithm
-brew "lz4"
-# Official Amazon AWS command-line interface
-brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Utility that creates projects from templates
-brew "cookiecutter"
 # Isolated development environments using Docker
 brew "docker-compose"
 # Disk Usage/Free Utility - a better 'df' alternative
@@ -23,14 +17,14 @@ brew "gh"
 brew "git-delta"
 # Quickly rewrite git repository history
 brew "git-filter-repo"
-# Interactive computing in Python
-brew "ipython"
 # Save disk space by cleaning non-essential files from software projects
 brew "kondo"
 # Lazier way to manage everything docker
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Extremely Fast Compression algorithm
+brew "lz4"
 # Modern and intuitive terminal-based text editor
 brew "micro"
 # Deep clean and optimize your Mac
@@ -41,12 +35,6 @@ brew "ncdu"
 brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
-# Execute binaries from Python packages in isolated environments
-brew "pipx"
-# Python package management tool
-brew "poetry"
-# Framework for managing multi-language pre-commit hooks
-brew "pre-commit"
 # Official tldr client written in Rust
 brew "tlrc"
 # Terminal multiplexer
