@@ -15,8 +15,6 @@ brew "fzf"
 brew "gh"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Quickly rewrite git repository history
-brew "git-filter-repo"
 # Save disk space by cleaning non-essential files from software projects
 brew "kondo"
 # Lazier way to manage everything docker
