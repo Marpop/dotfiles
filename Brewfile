@@ -47,10 +47,6 @@ brew "pipx"
 brew "poetry"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Official tldr client written in Rust
 brew "tlrc"
 # Terminal multiplexer
