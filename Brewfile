@@ -33,6 +33,8 @@ brew "ncdu"
 brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
+# Framework for managing multi-language pre-commit hooks
+brew "pre-commit"
 # Official tldr client written in Rust
 brew "tlrc"
 # Terminal multiplexer
