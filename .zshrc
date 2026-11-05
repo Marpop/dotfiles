@@ -73,8 +73,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
     brew
     git
-    iterm2
-    macos
     common-aliases
     docker
     docker-compose
@@ -96,6 +94,7 @@ plugins=(
     # zsh-syntax-highlighting
     # zsh-autosuggestions
 )
+[[ $OSTYPE == darwin* ]] && plugins+=(iterm2 macos) # macos plugin calls osascript
 
 source $ZSH/oh-my-zsh.sh
 
@@ -132,7 +131,8 @@ alias find="fd" # https://github.com/sharkdp/fd
 alias du="ncdu --color dark -rr -x --exclude .git" # https://github.com/rofl0r/ncdu
 alias df="command duf" # https://github.com/muesli/duf
 alias help="tldr" # https://github.com/tldr-pages/tldr
-# rm -> macOS Trash (/usr/bin/trash, Finder "Put Back" works); drops rm flags like -rf it doesn't accept
+# rm -> Trash: macOS /usr/bin/trash (Finder "Put Back" works), Linux trash-put (apt install trash-cli);
+# drops rm flags like -rf; if the trash tool is missing it fails without deleting anything
 unalias rm 2>/dev/null # common-aliases defines rm='rm -i'
 rm() {
   local files=() a only_files=0
@@ -141,7 +141,7 @@ rm() {
     elif [[ $a == -- ]]; then only_files=1
     fi
   done
-  /usr/bin/trash "${files[@]}"
+  if [[ $OSTYPE == darwin* ]]; then /usr/bin/trash "${files[@]}"; else trash-put "${files[@]}"; fi
 }
 alias c="clear"
 alias src="source ~/.zshrc"
@@ -162,7 +162,9 @@ alias de-migrate-all="de-m migrate_schemas"
 alias de-migrate-shared="de-m migrate_schemas --shared"
 
 # homebrew
-export HOMEBREW_BUNDLE_FILE="$HOME/Brewfile" # tracked by dgit, see !Brewfile in ~/.gitignore
+# one snapshot per OS (dump rewrites the whole file), tracked by dgit, see !Brewfile.* in ~/.gitignore
+if [[ $OSTYPE == darwin* ]]; then export HOMEBREW_BUNDLE_FILE="$HOME/Brewfile.macos"
+else export HOMEBREW_BUNDLE_FILE="$HOME/Brewfile.linux"; fi
 alias brew_backup="brew bundle dump --force"
 BREWUP_STAMP="$HOME/.cache/brewup.stamp"
 brewup() {
@@ -184,16 +186,17 @@ brewup() {
 # commit (and push) Brewfile if it changed, message lists added/removed packages
 brewfile_commit() {
   local file="$HOMEBREW_BUNDLE_FILE"
-  if dgit diff --quiet -- "$file"; then
-    echo "Brewfile: no changes"
+  dgit add -- "$file" || return # stage first: plain diff misses a new (untracked) per-OS Brewfile
+  if dgit diff --cached --quiet -- "$file"; then
+    echo "${file:t}: no changes"
     return 0
   fi
   local changes
-  changes=$(dgit diff -U0 -- "$file" |
+  changes=$(dgit diff --cached -U0 -- "$file" |
     sed -nE 's/^([+-])[a-z_]+ "([^"]+)".*/\1\2/p' | # any entry type: brew, cask, npm, flatpak...
     tr '\n' ' ')
-  dgit diff --stat -- "$file"
-  dgit commit -m "Update Brewfile: ${changes:-reorder/comments}" -- "$file" &&
+  dgit diff --cached --stat -- "$file"
+  dgit commit -m "Update ${file:t}: ${changes:-reorder/comments}" -- "$file" &&
   dgit push
 }
 
