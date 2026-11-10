@@ -1,7 +1,5 @@
 # Homebrew (PATH, MANPATH, HOMEBREW_PREFIX...)
-for b in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do # macOS, Linux
-  [[ -x $b ]] && eval "$($b shellenv)" && break
-done
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Added by Toolbox App
 export PATH="$PATH:/Users/marpop/Library/Application Support/JetBrains/Toolbox/scripts"
