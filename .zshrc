@@ -167,6 +167,15 @@ alias pip="pip3"
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
+# clear + dir tree without git-ignored files (brew tree): t2 / t3 = depth,
+# or Ctrl+X 2 / Ctrl+X 3 while typing - a zle widget keeps the half-typed line (not in Warp)
+_tree() { clear; tree -L $1 --gitignore }
+alias t2='_tree 2' t3='_tree 3'
+_tree_widget() { _tree ${KEYS[-1]}; zle reset-prompt } # last key pressed (2 or 3) = depth
+zle -N _tree_widget
+bindkey '^X2' _tree_widget
+bindkey '^X3' _tree_widget
+
 # homebrew
 export HOMEBREW_BUNDLE_FILE="$HOME/Brewfile" # tracked by dgit, see !Brewfile in ~/.gitignore
 alias brew_backup="brew bundle dump --force"
