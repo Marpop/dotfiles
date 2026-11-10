@@ -43,6 +43,8 @@ brew "tlrc"
 brew "tmux"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
 # The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode", trusted: true
 # OpenAI's coding agent that runs in your terminal
