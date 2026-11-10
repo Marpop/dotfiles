@@ -90,14 +90,19 @@ plugins=(
     history
     fzf
     alias-finder
+    z # jump to a frecent dir by part of its name: `z weblab`; learns from every cd
     # elixir
     # zsh-history-substring-search
     # zsh-completions
     # zsh-syntax-highlighting
-    # zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# grey history-based suggestion while typing, → accepts it (brew zsh-autosuggestions);
+# skipped in Warp, which has its own and doesn't run zle plugins
+[[ $TERM_PROGRAM != WarpTerminal && -r $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] &&
+  source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # User configuration
 
@@ -120,6 +125,15 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # docker
 export DOCKER_CLI_HINTS=false
+# cheat sheet only, defined by the omz docker / docker-compose plugins (full list: af docker)
+#   dps / dpsa           docker ps / ps -a          dsts     docker stats
+#   dxcit <c> bash       docker exec -it            dlo <c>  docker container logs
+#   dstp / drs <c>       stop / restart container   dsta     stop ALL running containers
+#   dils / dirm          image ls / rm              dsprune  docker system prune
+#   dco                  docker-compose             dcps     compose ps
+#   dcup / dcupd         compose up / up -d         dcupdb   up -d --build
+#   dcstop / dcdn        compose stop / down        dcrestart compose restart
+#   dclf [svc]           compose logs -f            dce <svc> compose exec
 
 # aliases
 zstyle ':omz:plugins:alias-finder' autoload no # manual: af "git status" - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
@@ -152,14 +166,6 @@ alias pip="pip3"
 
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
-
-# work project
-PROJECT_BE="project-be"
-alias de="docker exec -it $PROJECT_BE"
-alias de-m="de python manage.py"
-alias de-makemigrations="de-m makemigrations"
-alias de-migrate-all="de-m migrate_schemas"
-alias de-migrate-shared="de-m migrate_schemas --shared"
 
 # homebrew
 export HOMEBREW_BUNDLE_FILE="$HOME/Brewfile" # tracked by dgit, see !Brewfile in ~/.gitignore
@@ -194,6 +200,9 @@ brewfile_commit() {
   dgit commit -m "Update Brewfile: ${changes:-reorder/comments}" -- "$file" &&
   dgit push
 }
+
+# machine-local config (work projects etc.), not tracked: ~/.gitignore ignores everything
+[[ -r ~/.zshrc_local ]] && source ~/.zshrc_local
 
 # warpify subshell
 [[ -z $WARP_BOOTSTRAPPED ]] && printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh"}}\x9c'
