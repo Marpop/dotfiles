@@ -5,3 +5,5 @@
     editor = micro
 	excludesfile = ~/.gitignore_global
 	pager = less -FRX
+[include]
+	path = ~/.config/git/local # ustawienia tylko dla tego komputera (nietrackowane); brak pliku = git go pomija
