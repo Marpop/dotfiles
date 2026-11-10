@@ -175,11 +175,36 @@ brewup() {
   touch "$BREWUP_STAMP"
   brew doctor
 }
-# remind at shell start when brewup hasn't run for 7+ days (glob qualifier, no subprocess)
-() {
-  local stale=( $1(Nmd+6) ) # modified more than 6 full days ago, i.e. 7+ days
-  [[ ! -e $1 || -n $stale ]] && echo "🍺 brewup not run for 7+ days - run: brewup"
-} "$BREWUP_STAMP"
+
+# mole (Mac cleaner): a real `mole clean` / `mole analyze` stamps the time for the reminders below
+# shortcut: the `mole` main menu and the `mo` symlink don't stamp; ESC at clean's sudo prompt exits 0 and still stamps
+MOLE_CLEAN_STAMP="$HOME/.cache/mole-clean.stamp"
+MOLE_ANALYZE_STAMP="$HOME/.cache/mole-analyze.stamp"
+mole() {
+  command mole "$@" || return
+  [[ -n ${(M)@:#(-n|--dry-run|-h|--help|--whitelist)} ]] && return 0 # preview/help/config: nothing was done
+  case $1 in
+    clean) touch "$MOLE_CLEAN_STAMP" ;;
+    analyze|analyse) touch "$MOLE_ANALYZE_STAMP" ;;
+  esac
+  return 0
+}
+
+# reminders at shell start (zsh modules, no subprocess except sysctl)
+zmodload zsh/datetime; zmodload -F zsh/stat b:zstat
+# print $3 when stamp file $1 is missing or older than $2 seconds
+_remind_stale() {
+  local -a mtime
+  zstat -A mtime +mtime -- "$1" 2>/dev/null && (( EPOCHSECONDS - mtime[1] < $2 )) || echo "$3"
+}
+_remind_stale "$BREWUP_STAMP"       $((7*86400)) "🍺 brewup not run for 7+ days - run: brewup"
+_remind_stale "$MOLE_CLEAN_STAMP"   86400        "🧹 mole clean not run for 24h+ - run: mole clean"
+_remind_stale "$MOLE_ANALYZE_STAMP" $((7*86400)) "🔍 mole analyze not run for 7+ days - run: mole analyze"
+() { # kern.boottime prints "{ sec = 1793450422, usec = ... } <date>"
+  local boot=${${(s: :)"$(sysctl -n kern.boottime)"}[4]%,}
+  [[ $boot == <-> ]] && (( EPOCHSECONDS - boot >= 7*86400 )) &&
+    echo "🔄 Mac up for $(( (EPOCHSECONDS - boot) / 86400 )) days - restart it"
+}
 
 # commit (and push) Brewfile if it changed, message lists added/removed packages
 brewfile_commit() {
@@ -199,3 +224,7 @@ brewfile_commit() {
 
 # warpify subshell
 [[ -z $WARP_BOOTSTRAPPED ]] && printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh"}}\x9c'
+
+
+# Mole shell completion
+if output="$(mole completion zsh 2>/dev/null)"; then eval "$output"; fi
