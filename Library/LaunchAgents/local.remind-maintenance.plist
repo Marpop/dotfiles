@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Daily 10:00 maintenance notification; if the Mac sleeps then, launchd runs it on wake.
+     Reload after editing: launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/local.remind-maintenance.plist;
+                           launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/local.remind-maintenance.plist -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>local.remind-maintenance</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>-f</string>
+    <string>/Users/marpop/.local/bin/remind-maintenance</string>
+    <string>--notify</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>10</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+  <key>StandardErrorPath</key>
+  <string>/Users/marpop/Library/Logs/remind-maintenance.log</string>
+</dict>
+</plist>

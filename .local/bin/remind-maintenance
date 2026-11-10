@@ -1,0 +1,38 @@
+#!/bin/zsh -f
+# Maintenance reminders: brewup (7d), mole clean (24h), mole optimize (7d), restart (7d uptime).
+#   remind-maintenance           print due reminders (called from ~/.zshrc at shell start)
+#   remind-maintenance --notify  show them as one macOS notification (called daily by launchd,
+#                                ~/Library/LaunchAgents/local.remind-maintenance.plist)
+zmodload zsh/datetime; zmodload -F zsh/stat b:zstat
+
+DAY=86400
+MOLE_LOG=$HOME/Library/Logs/mole/operations.log
+BREWUP_STAMP=$HOME/.cache/brewup.stamp # touched by brewup() in ~/.zshrc
+due=()
+
+# epoch of mole's last finished $1 session, from lines like
+# "# ========== clean run=... session ended at 2026-11-10 22:07:39, 57 items, 665.1MB =========="
+# (dry runs are logged as "clean-dry-run run=..." and don't match; covers menu, `mo` and `mole` alike)
+mole_last() {
+  local line=$(grep "^# ========== $1 run=.* session ended at " $MOLE_LOG 2>/dev/null | tail -1)
+  [[ -n $line ]] && strftime -r '%Y-%m-%d %H:%M:%S' ${${line#* session ended at }%%,*}
+}
+# add reminder $3 when epoch $1 is empty or older than $2 seconds
+check() { [[ -n $1 ]] && (( EPOCHSECONDS - $1 < $2 )) || due+=("$3"); }
+
+mtime=(); zstat -A mtime +mtime -- $BREWUP_STAMP 2>/dev/null
+check "$mtime[1]"              $((7*DAY)) "🍺 brewup not run for 7+ days - run: brewup"
+check "$(mole_last clean)"     $DAY       "🧹 mole clean not run for 24h+ - run: mole clean"
+check "$(mole_last optimize)"  $((7*DAY)) "⚙️ mole optimize not run for 7+ days - run: mole optimize"
+boot=${${(s: :)"$(sysctl -n kern.boottime)"}[4]%,} # "{ sec = 1793450422, usec = ... } <date>"
+[[ $boot == <-> ]] && (( EPOCHSECONDS - boot >= 7*DAY )) &&
+  due+=("🔄 Mac up for $(( (EPOCHSECONDS - boot) / DAY )) days - restart it")
+
+(( $#due )) || exit 0
+if [[ $1 == --notify ]]; then
+  # message passed via argv, so quotes in it can't break the AppleScript
+  osascript -e 'on run argv' -e 'display notification (item 1 of argv) with title "Maintenance"' -e 'end run' \
+    "${(F)due}"
+else
+  print -l -- $due
+fi
