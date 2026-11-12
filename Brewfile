@@ -41,6 +41,8 @@ brew "pre-commit"
 brew "tlrc"
 # Terminal multiplexer
 brew "tmux"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Fish-like fast/unobtrusive autosuggestions for zsh
