@@ -167,6 +167,12 @@ alias pip="pip3"
 # home directory in git repository
 alias dgit="git --git-dir ~/.dotfiles/.git --work-tree=$HOME"
 
+# work project: run anywhere inside its repo (compose files live in config/; `make help` for the rest)
+wdc() { docker compose -f "$(git rev-parse --show-toplevel)/config/docker-compose.yml" "$@"; } # wdc ps | wdc logs -f celery | wdc restart backend
+alias wm="wdc exec backend python manage.py" # wm migrate | wm makemigrations order | wm load_account_seeds
+alias wtest="wdc exec backend pytest"        # wtest tests/per_commit/settings/test_cost_group.py
+wpsql() { wdc exec database sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB"'; }
+
 # clear + dir tree without git-ignored files (brew tree): t2 / t3 = depth,
 # or Ctrl+X 2 / Ctrl+X 3 while typing - a zle widget keeps the half-typed line (not in Warp)
 _tree() { clear; tree -L $1 --gitignore }
